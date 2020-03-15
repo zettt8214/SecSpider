@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报告预览</title>
+    <link href="../../../static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../static/assets/build/css/report.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" style="width: 80%">
+   <div class="page-header">
+    <h3>安全监控周报<br><small>发布日期：{{ data['time'] }}</small></h3>
+    </div>
+    <div class="jumbotron">
+        <h4>本周共监控到{{ data['week_count'] }}条内容，其中与安防大华相关的有{{ data['dahua_count'] }}条,设备厂商相关内容{{ data['youshang_count'] }}条，其它{{ data['other_count'] }}条</h4>
+  </div>
+{% if data['week_count']!=0 %}
+    <div id="chartContainer">
+        <div style="height: 100%">
+                <div class="chartItem" style="height: 100%;width: 100px; ">
+                    <div style="height:{{ (1-data['dahua_count']/data['week_count'])*100 }}%"></div>
+                    <div class="info-1 chartRealItem" style="height:{{ (data['dahua_count']/data['week_count'])*100 }}%; position: relative">
+                        <span class="chartLableTop">{{ data['dahua_count'] }}</span>
+                        <span class="chartLableBottom">安防大华相关内容</span>
+                    </div>
+                </div>
+                <div class="chartItem" style="height: 100%;width: 100px; ">
+                    <div style="height: {{ (1-data['youshang_count']/data['week_count'])*100 }}%"></div>
+                    <div class="info-2 chartRealItem" style="height:{{ (data['youshang_count']/data['week_count'])*100 }}%; position: relative">
+                        <span class="chartLableTop">{{ data['youshang_count'] }}</span>
+                        <span class="chartLableBottom">设备厂商相关内容</span>
+                    </div>
+                </div>
+                <div style="height: 100%">
+                <div class="chartItem" style="height: 100%;width: 100px; ">
+                    <div style="height: {{ (1-data['other_count']/data['week_count'])*100 }}%"></div>
+                    <div class="info-3 chartRealItem" style="height:{{ (data['other_count']/data['week_count'])*100 }}%; position: relative">
+                        <span class="chartLableTop">{{ data['other_count'] }}</span>
+                        <span class="chartLableBottom">其它内容</span>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </div>
+{% endif %}
+
+    <div class="dahua">
+    <table class=" table table-striped">
+
+  <thead>
+  <caption>安防大华相关内容</caption>
+  <thead>
+    <tr>
+      <th>标题</th>
+      <th>日期</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        {% for d in data['dahua_content'] %}
+            <td><a class="mya" href="{{ d.href }}">{{ d.title }}</a></td>
+            <td>{{ d.time }}</td>
+            </tr>
+        {% endfor %}
+  </tbody>
+</table>
+    </div>
+
+
+    <div class="youshang">
+    <table class=" table table-striped">
+
+  <thead>
+  <caption>设备厂商相关内容</caption>
+    <thead>
+    <tr>
+      <th>标题</th>
+      <th>日期</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        {% for d in data['youshang_content'] %}
+            <td><a class="mya" href="{{ d.href }}">{{ d.title }}</a></td>
+            <td>{{ d.time }}</td>
+            </tr>
+        {% endfor %}
+  </tbody>
+</table>
+    </div>
+    <div class="other">
+    <table class=" table table-striped">
+
+  <thead>
+  <caption>其它内容</caption>
+    <thead>
+    <tr>
+      <th>标题</th>
+      <th>日期</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        {% for d in data['total_content'] %}
+            <td><a class="mya" href="{{ d.href }}">{{ d.title }}</a></td>
+            <td>{{ d.time }}</td>
+            </tr>
+        {% endfor %}
+  </tbody>
+</table>
+    </div>
+
+
+</div>
+<script src="../../../static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="../../../static/jquery.js"></script>
+</body>
+</html>

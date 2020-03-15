@@ -1,0 +1,58 @@
+#chartContainer{
+    width: 400px;
+    height: 280px;
+    padding: 45px 10px 5px;
+    margin: 0 237px 45px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #888;
+    position: relative;
+}
+
+.chartFrame{
+    left:50px;
+    width: 500px;
+    height: 325px;
+    position: absolute;
+    border-bottom: 1px solid #8c8c8c;
+}
+
+.chartItem{
+    float: left;
+    margin: 5px 10px;
+    width: 100px;
+    height: 100%;
+    position: relative;
+    text-align: center;
+
+}
+
+.chartRealItem{
+    -webkit-border-radius: 5px 5px  0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.chartLableBottom{
+    position: absolute;
+    left: 0;
+    bottom: -25px;
+    width: 100px;
+
+}
+.chartLableTop{
+    position: absolute;
+    left:0;
+    top:-25px;
+    width:100px;
+}
+.info-1{
+    background: #f64551;
+}
+
+.info-2{
+    background: #eed364;
+}
+
+.info-3{
+    background: #00caff;
+}

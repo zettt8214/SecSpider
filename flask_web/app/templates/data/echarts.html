@@ -1,0 +1,67 @@
+{% extends "/auth/base_site.html" %}
+
+{% block title %} ECharts {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+{% endblock stylesheets %}
+
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+
+<div class="container" style="margin-top: 80px">
+   <div class="jumbotron" >
+        <h2 style="text-align: center">数据统计</h2>
+       <p>爬取总条数：<span id="total_count"></span></p>
+        <p>
+            本周爬取总数：<span id="week_count"></span>
+        </p>
+   </div>
+</div>
+
+      <div class="page-title">
+        <div class="title_left">
+          <h3>数据统计图表</h3>
+        </div>
+
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>一周内监控数据来源</h2>
+              <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+              <div id="mainb" style="height:350px;"></div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <button id="reportReview" type="button" class="btn btn-primary" onclick="location.href='/auth/report/view'" />周报预览</button>
+      <button id="reportExport" type="button" class="btn btn-primary" onclick="location.href='/auth/report/export'" />导出周报</button>
+
+  </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super() }}
+  <!-- ECharts -->
+  <script src="{{ url_for('static', filename='../../static/assets/vendors/echarts/dist/echarts.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='../../static/assets/vendors/echarts/map/js/world.js') }}"></script>
+{% endblock javascripts %}

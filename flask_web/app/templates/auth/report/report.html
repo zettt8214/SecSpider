@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for i in all %}
+    <td><a class="mya" href="{{ i.href }}">{{ i.title }}</a></td>
+            <td>{{ i.time }}</td>
+            </tr>
+    {% endfor %}
+    <a href="/">报告预览</a>
+</body>
+</html>

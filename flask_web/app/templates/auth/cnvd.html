@@ -1,0 +1,38 @@
+{% extends "auth/base_site.html" %}
+{% import "auth/site_template/_macros.html" as macros %}
+{% block title %}
+    CNVD
+{% endblock %}
+{% block content %}
+<div class="right_col" role="main">
+<table class="table table-condensed">
+  <caption>CNVD</caption>
+  <thead>
+    <tr>
+      <th>标题</th>
+      <th>日期</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        {% for d in data %}
+            <td><a class="info" href="{{ d.href }}">{{ d.title }}</a></td>
+            <td><span class="date">{{ d.time }}</span></td>
+            <td><span class="badge add">保存</span></td>
+            </tr>
+        {% endfor %}
+
+  </tbody>
+</table>
+{%if pagination%}
+    <div class="pagination">
+        {{ macros.pagination_widget(pagination, 'auth.cnvd') }}
+    </div>
+{% endif %}
+</div>
+{% endblock %}
+
+{% block javascripts %}
+  {{ super()}}
+    <script src="{{ url_for('static',filename='../../static/assets/build/js/my.js') }}"></script>
+{% endblock javascripts %}
